@@ -49,7 +49,7 @@ h1,h2,h3 {
   display: block;
   padding: 48px;
 
-  background-image: url("/assets/images/main-background.jpg");
+  background-image: url("/assets/images/main-background.webp"), url("/assets/images/main-background.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
