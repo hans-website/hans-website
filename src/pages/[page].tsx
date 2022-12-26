@@ -20,7 +20,7 @@ const PaginatePosts = (props: IBlogGalleryProps) => (
   </Main>
 );
 
-export const getStaticPaths: GetStaticPaths<IPageUrl> = async () => {
+export const getStaticPaths: GetStaticPaths<IPageUrl> = () => {
   const posts = getAllPosts(['slug']);
 
   const pages = convertTo2D(posts, AppConfig.pagination_size);
