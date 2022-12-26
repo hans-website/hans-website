@@ -39,7 +39,9 @@ a {
   }
 }
 
-h1,h2,h3 {
+h1,
+h2,
+h3 {
   font-weight: 300;
   margin: 0;
 }
@@ -71,12 +73,25 @@ h1,h2,h3 {
   padding: 16px;
   margin: -200px 64px 0 48px;
   max-width: 1200px;
-  
+
+  animation: fadein 0.5s ease;
+
   h2 {
     font-size: 40px;
   }
 
   .row {
     margin-top: 16px;
+  }
+}
+
+@keyframes fadein {
+  from {
+    transform: translatey(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translatey(0px);
+    opacity: 1;
   }
 }
