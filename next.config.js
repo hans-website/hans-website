@@ -5,10 +5,23 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const baseUrl = '';
 
+const isGithubActions = process.env.GITHUB_ACTIONS || false;
+
+let assetPrefix = '';
+let basePath = '';
+
+if (isGithubActions) {
+  const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, '');
+
+  assetPrefix = `/${repo}/`;
+  basePath = `/${repo}`;
+}
+
 module.exports = withBundleAnalyzer({
+  assetPrefix,
+  basePath,
   poweredByHeader: false,
   trailingSlash: true,
-  basePath: baseUrl,
   env: {
     baseUrl,
   },
