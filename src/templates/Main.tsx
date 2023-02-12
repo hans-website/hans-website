@@ -15,47 +15,35 @@ const Main = (props: IMainProps) => (
     {props.meta}
 
     <div className="mx-auto">
-      <div className="border-b border-gray-300">
-        {/* <div className="pt-16 pb-8"> */}
-        {/* <div className="font-semibold text-3xl text-gray-900">
-            {AppConfig.title}
-          </div> */}
-        {/* <div className="text-xl">{AppConfig.description}</div> */}
-        {/* </div> */}
-        <div>
-          <Navbar>
-            <li className="mr-6">
-              <Link href="/">
-                <a>Home</a>
-              </Link>
-            </li>
-            <li className="mr-6">
-              <Link href="/vita/">
-                <a>Vita</a>
-              </Link>
-            </li>
-            <li className="mr-6">
-              <Link href="/schedule/">
-                <a>Termine</a>
-              </Link>
-            </li>
-            <li className="mr-6">
-              <Link href="/news/">
-                <a>News</a>
-              </Link>
-            </li>
-            <li className="mr-6">
-              <Link href="/about/">
-                <a>Kontakt</a>
-              </Link>
-            </li>
-          </Navbar>
-        </div>
+      <div>
+        <Navbar>
+          <li>
+            <Link className="title" href="/">
+              HP
+            </Link>
+          </li>
+          <span className="fill"></span>
+          <li className="mr-6">
+            <Link href="/">Home</Link>
+          </li>
+          <li className="mr-6">
+            <Link href="/vita/">Vita</Link>
+          </li>
+          <li className="mr-6">
+            <Link href="/schedule/">Termine</Link>
+          </li>
+          <li className="mr-6">
+            <Link href="/news/">News</Link>
+          </li>
+          <li className="about">
+            <Link href="/about/">Kontakt</Link>
+          </li>
+        </Navbar>
       </div>
 
-      <div className="text-xl py-5">{props.children}</div>
+      <div id="content">{props.children}</div>
 
-      <div className="border-t border-gray-300 text-center py-8 text-sm">
+      <div id="copyright">
         © Copyright {new Date().getFullYear()} {AppConfig.title}. Powered with{' '}
         <span role="img" aria-label="Love">
           ♥

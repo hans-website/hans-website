@@ -5,21 +5,22 @@ type INavbarProps = {
 };
 
 const Navbar = (props: INavbarProps) => (
-  <ul className="navbar">
-    {props.children}
+  <div>
+    <ul className="navbar">
+      {props.children}
+      <style jsx>
+        {`
+          .navbar :global(a) {
+            @apply text-gray-700;
+          }
 
-    <style jsx>
-      {`
-        .navbar :global(a) {
-          @apply text-gray-700;
-        }
-
-        .navbar :global(a:hover) {
-          @apply no-underline text-gray-900;
-        }
-      `}
-    </style>
-  </ul>
+          .navbar :global(a:hover) {
+            @apply no-underline text-gray-900;
+          }
+        `}
+      </style>
+    </ul>
+  </div>
 );
 
 export { Navbar };

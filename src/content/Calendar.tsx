@@ -9,7 +9,11 @@ const Calendar = () => {
   const [currentDate, setCurrentDate] = useState('');
 
   useEffect(() => {
-    setCurrentDate(new Date(Date.now()).toISOString());
+    const date = new Date(Date.now());
+    date.setHours(2);
+    date.setMinutes(0);
+    date.setSeconds(0);
+    setCurrentDate(date.toISOString());
   }, []);
 
   const calId =
@@ -38,15 +42,19 @@ const Calendar = () => {
       const dateTime = new Date(Date.parse(item.start.dateTime));
       rows.push(
         <div key={item.id} className="row">
-          <h3>{item.summary}</h3>
-          <div>
-            {dateTime.toLocaleDateString()}{' '}
-            {dateTime.toLocaleTimeString([], {
-              hour: '2-digit',
-              minute: '2-digit',
-            })}
+          <div className="dateTime">
+            <div className="date">{dateTime.toLocaleDateString()}</div>
+            <div className="time">
+              {dateTime.toLocaleTimeString([], {
+                hour: '2-digit',
+                minute: '2-digit',
+              })}
+            </div>
           </div>
-          <div dangerouslySetInnerHTML={{ __html: item.description }}></div>
+          <div className="information">
+            <h3>{item.summary}</h3>
+            <div dangerouslySetInnerHTML={{ __html: item.description }}></div>
+          </div>
         </div>
       );
     }
@@ -54,12 +62,7 @@ const Calendar = () => {
 
   console.log(data.items);
 
-  return (
-    <div className="schedule">
-      <h2>Termine:</h2>
-      {rows}
-    </div>
-  );
+  return <div className="schedule">{rows}</div>;
 };
 
 export { Calendar };

@@ -12,14 +12,17 @@ import { getAllPosts } from '../utils/Content';
 
 const Index = (props: IBlogGalleryProps) => (
   <Main meta={<Meta title="Home" description={AppConfig.description} />}>
-    <div className="home">
+    <div className="home-title">
       <h1>Hans Porten</h1>
-      <h2>Bariton</h2>
+      <span>Bariton</span>
     </div>
 
+    <h2>Termine</h2>
     <Calendar />
-
-    <BlogGallery posts={props.posts} pagination={props.pagination} />
+    <div className="news">
+      <h2>News</h2>
+      <BlogGallery posts={props.posts} pagination={props.pagination} />
+    </div>
   </Main>
 );
 

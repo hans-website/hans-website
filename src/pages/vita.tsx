@@ -6,6 +6,9 @@ import { Main } from '../templates/Main';
 
 const Vita = () => (
   <Main meta={<Meta title="Lorem ipsum" description="Lorem ipsum" />}>
+    <div className="sub-title">
+      <h1>Vita</h1>
+    </div>
     <Content>
       <p>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione fuga
