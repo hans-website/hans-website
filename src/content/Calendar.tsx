@@ -6,29 +6,31 @@ const fetcher = (url: RequestInfo, init?: RequestInit) =>
   fetch(url, init).then((res) => res.json());
 
 const Calendar = () => {
-  const [currentDate, setCurrentDate] = useState('');
+  const [requestString, setRequestString] = useState('');
+
+  const calId =
+    '4908091ffce1a9fc010de8f1267503039f161c08f999bbc2eab1d3dd243f5a98@group.calendar.google.com';
+  const apiKey = 'AIzaSyBLem43I84ozduVr3MxAaxErmlRhhKEhQE';
 
   useEffect(() => {
     const date = new Date(Date.now());
     date.setHours(2);
     date.setMinutes(0);
     date.setSeconds(0);
-    setCurrentDate(date.toISOString());
+    setRequestString(
+      `https://www.googleapis.com/calendar/v3/calendars/${calId}/events?orderBy=startTime&key=${apiKey}&timeMin=${date.toISOString()}&singleEvents=true&maxResults=10`
+    );
   }, []);
 
-  const calId =
-    '4908091ffce1a9fc010de8f1267503039f161c08f999bbc2eab1d3dd243f5a98@group.calendar.google.com';
-  const apiKey = 'AIzaSyBLem43I84ozduVr3MxAaxErmlRhhKEhQE';
-
-  const { data, error } = useSWR(
-    currentDate
-      ? `https://www.googleapis.com/calendar/v3/calendars/${calId}/events?key=${apiKey}&timeMin=${currentDate}`
-      : null,
-    fetcher
-  );
+  const { data, error } = useSWR(requestString || null, fetcher, {
+    revalidateIfStale: false,
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
+  });
 
   if (error) return <div>Laden der Termine ist fehlgeschlagen</div>;
   if (!data) return <div>Loading...</div>;
+  localStorage.setItem(requestString, JSON.stringify(data));
 
   const rows: JSX.Element[] = [];
 
