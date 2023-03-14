@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { format } from 'date-fns';
 import { GetStaticPaths, GetStaticProps } from 'next';
 
 import { Content } from '../../content/Content';
@@ -38,7 +37,14 @@ const DisplayPost = (props: IPostProps) => (
   >
     <div className="post-title">
       <h1>{props.title}</h1>
-      <span>{format(new Date(props.date), 'd. LLLL yyyy')}</span>
+      <span>
+        {new Date(props.date).toLocaleDateString('de-DE', {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        })}
+      </span>
     </div>
 
     <Content>
