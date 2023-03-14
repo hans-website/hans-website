@@ -42,7 +42,8 @@ a {
   font-size: 20px;
 
   .title {
-    font-size: 45px;
+    font-size: 28px;
+    line-height: 0.9;
   }
   .fill {
     flex-grow: 1;
@@ -81,13 +82,15 @@ a {
   }
 
   @media only screen and (max-width: 800px) {
+    margin: 10px 24px 10px 24px;
     height: 65px;
+    align-items: center;
 
     ul {
       display: none;
       position: absolute;
       flex-direction: column;
-      top: 65px;
+      top: 85px;
       padding-right: 8px;
       right: 0;
       left: 0;

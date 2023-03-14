@@ -10,7 +10,9 @@ const Navbar = (props: INavbarProps) => (
   <div className="navbar">
     <input type="checkbox" className="checkbox" id="checked" />
     <Link className="title" href="/">
-      HP
+      Hans
+      <br />
+      Porten
     </Link>
     <span className="fill"></span>
     <ul>
