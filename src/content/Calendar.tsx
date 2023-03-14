@@ -62,7 +62,20 @@ const Calendar = () => {
     }
   );
 
-  console.log(data.items);
+  if (data.items.length === 0) {
+    rows.push(
+      <div className="row">
+        <div className="dateTime">
+          <div className="date"></div>
+          <div className="time"></div>
+        </div>
+        <div className="information">
+          <h3>Aktuell gibt es keine Termine</h3>
+          <div>Bitte zu einem späteren Zeitpunkt erneut prüfen</div>
+        </div>
+      </div>
+    );
+  }
 
   return <div className="schedule">{rows}</div>;
 };

@@ -17,12 +17,6 @@ const Main = (props: IMainProps) => (
     <div className="mx-auto">
       <div>
         <Navbar>
-          <li>
-            <Link className="title" href="/">
-              HP
-            </Link>
-          </li>
-          <span className="fill"></span>
           <li className="mr-6">
             <Link href="/">Home</Link>
           </li>

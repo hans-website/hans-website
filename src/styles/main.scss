@@ -7,7 +7,8 @@
 }
 
 html {
-  font-family: "Source Sans Pro", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Source Sans Pro", "Segoe UI", Tahoma, Geneva, Verdana,
+    sans-serif;
   background-color: #1b1b1b;
   color: #fafafa;
 }
@@ -40,29 +41,70 @@ a {
 
   font-size: 20px;
 
+  .title {
+    font-size: 45px;
+  }
   .fill {
     flex-grow: 1;
   }
 
-  .title {
-    font-size: 45px;
+  input {
+    display: none;
   }
 
-  li {
-    &.about {
-      background-color: #a88657;
-      border-radius: 25.5px;
+  ul {
+    margin: 0;
+    display: flex;
+    align-items: flex-end;
+
+    li {
+      &.about {
+        background-color: #a88657;
+        border-radius: 25.5px;
+      }
+
+      &:not(:first-child) {
+        margin-left: 12px;
+      }
+
+      list-style: none;
+
+      a {
+        display: block;
+        padding: 8px 30px;
+      }
+    }
+  }
+
+  label {
+    display: none;
+  }
+
+  @media only screen and (max-width: 800px) {
+    height: 65px;
+
+    ul {
+      display: none;
+      position: absolute;
+      flex-direction: column;
+      top: 65px;
+      padding-right: 8px;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background-color: #1b1b1b;
+
+      li a {
+        padding: 8px 20px;
+      }
     }
 
-    &:not(:first-child) {
-      margin-left: 12px;
-    }
-
-    list-style: none;
-
-    a {
+    label {
       display: block;
-      padding: 8px 30px;
+    }
+
+    .checkbox:checked ~ ul {
+      display: flex;
     }
   }
 }
@@ -75,11 +117,13 @@ h3 {
 }
 
 .home-title {
-  height: calc(60vh);
+  height: 60vh;
   display: block;
   padding: 48px;
 
-  background-image: url("/assets/images/main-background.webp"), url("/assets/images/main-background2.jpg");
+  background-image: url("/assets/images/main-background.webp"),
+    url("/assets/images/main-background2.jpg");
+
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
@@ -95,6 +139,41 @@ h3 {
     font-size: 3vw;
     margin: 0 0 0 44vw;
   }
+
+  @media only screen and (max-width: 1024px) {
+    height: 40vh;
+  }
+  @media only screen and (max-width: 700px) {
+    height: 200px;
+    background-position: left -50px center;
+
+    h1 {
+      font-weight: 300;
+      font-size: 50px;
+      margin: 2vh 0 0 50vw;
+    }
+    span {
+      font-weight: normal;
+      font-size: 25px;
+      margin: 0 0 0 50vw;
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+    height: 200px;
+    background-position: -120px center;
+
+    h1 {
+      font-weight: 300;
+      font-size: 50px;
+      margin: 2vh 16px 0 50vw;
+    }
+    span {
+      font-weight: normal;
+      font-size: 25px;
+      margin: 0 16px 0 50vw;
+    }
+  }
 }
 
 .sub-title {
@@ -102,7 +181,8 @@ h3 {
   display: block;
   padding: 48px;
 
-  background-image: url("/assets/images/main-background.webp"), url("/assets/images/main-background2.jpg");
+  background-image: url("/assets/images/main-background.webp"),
+    url("/assets/images/main-background2.jpg");
   background-size: cover;
   background-position-y: -28px;
   background-repeat: no-repeat;
@@ -120,7 +200,8 @@ h3 {
   display: block;
   padding: 48px;
 
-  background-image: url("/assets/images/main-background.webp"), url("/assets/images/main-background2.jpg");
+  background-image: url("/assets/images/main-background.webp"),
+    url("/assets/images/main-background2.jpg");
   background-size: cover;
   background-position-y: -28px;
   background-repeat: no-repeat;
@@ -134,14 +215,13 @@ h3 {
     font-weight: 300;
     font-size: 1vw;
     margin: 8px 0 0 40vw;
-
   }
 }
 
 h2 {
   font-size: 40px;
   text-align: center;
-  padding-top: 48px
+  padding-top: 48px;
 }
 
 .schedule {
@@ -188,6 +268,27 @@ h2 {
   h2 {
     text-align: center;
     font-size: 40px;
+  }
+}
+
+.news-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .news-item {
+    margin: 16px;
+    width: 300px;
+    height: 220px;
+    background-position: center;
+    background-size: cover;
+
+    text-align: center;
+
+    h3 {
+      font-size: 22px;
+      padding-top: 80px;
+    }
   }
 }
 

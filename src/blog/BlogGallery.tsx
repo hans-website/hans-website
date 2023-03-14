@@ -13,19 +13,23 @@ export type IBlogGalleryProps = {
 
 const BlogGallery = (props: IBlogGalleryProps) => (
   <>
-    <ul>
+    <div className="news-items">
       {props.posts.map((elt) => (
-        <li key={elt.slug} className="mb-3 flex justify-between">
-          <Link href="/posts/[slug]" as={`/posts/${elt.slug}`}>
+        <Link href="/posts/[slug]" as={`/posts/${elt.slug}`} key={elt.slug}>
+          <div
+            className="news-item"
+            style={{
+              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url(${elt.image})`,
+            }}
+          >
             <h3>{elt.title}</h3>
-          </Link>
-
-          <div className="text-right">
-            {format(new Date(elt.date), 'LLL d, yyyy')}
+            <div className="text-right">
+              {format(new Date(elt.date), 'LLL d, yyyy')}
+            </div>
           </div>
-        </li>
+        </Link>
       ))}
-    </ul>
+    </div>
 
     <Pagination
       previous={props.pagination.previous}
