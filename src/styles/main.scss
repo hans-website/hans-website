@@ -233,6 +233,10 @@ h2 {
     padding: 64px;
     margin: 0 auto 0 auto;
     max-width: 800px;
+    
+    @media only screen and (max-width: 800px) {
+      padding: 64px 0;
+    }
 
     &:not(:first-of-type) {
       border-top: 1px solid #a88657;
