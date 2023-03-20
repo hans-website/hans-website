@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { GetStaticProps } from 'next';
+import Link from 'next/link';
 
 import { BlogGallery, IBlogGalleryProps } from '../blog/BlogGallery';
 import { Calendar } from '../content/Calendar';
@@ -18,7 +19,10 @@ const Index = (props: IBlogGalleryProps) => (
     </div>
 
     <h2>Termine</h2>
-    <Calendar />
+    <Calendar numEvents={6} />
+    <div className="showMore">
+      <Link href="/schedule/">Mehr anzeigen →</Link>
+    </div>
     <div className="news">
       <h2>News</h2>
       <BlogGallery posts={props.posts} pagination={props.pagination} />

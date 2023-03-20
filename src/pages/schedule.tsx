@@ -10,7 +10,7 @@ const Schedule = () => (
     <div className="sub-title">
       <h1>Termine</h1>
     </div>
-    <Calendar />
+    <Calendar numEvents={50} />
   </Main>
 );
 

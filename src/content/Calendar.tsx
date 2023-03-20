@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 
 import useSWR from 'swr';
 
 const fetcher = (url: RequestInfo, init?: RequestInit) =>
   fetch(url, init).then((res) => res.json());
 
-const Calendar = () => {
+interface CalendarProps {
+  numEvents: number;
+}
+
+const Calendar: FC<CalendarProps> = (props) => {
   const [requestString, setRequestString] = useState('');
 
   const calId =
@@ -19,7 +23,9 @@ const Calendar = () => {
     date.setMinutes(0);
     date.setSeconds(0);
     setRequestString(
-      `https://www.googleapis.com/calendar/v3/calendars/${calId}/events?orderBy=startTime&key=${apiKey}&timeMin=${date.toISOString()}&singleEvents=true&maxResults=10`
+      `https://www.googleapis.com/calendar/v3/calendars/${calId}/events?orderBy=startTime&key=${apiKey}&timeMin=${date.toISOString()}&singleEvents=true&maxResults=${
+        props.numEvents
+      }`
     );
   }, []);
 
@@ -32,7 +38,21 @@ const Calendar = () => {
   console.log(data);
 
   if (error) return <div>Laden der Termine ist fehlgeschlagen</div>;
-  if (!data) return <div>Loading...</div>;
+  if (!data)
+    return (
+      <div className="schedule">
+        <div className="row">
+          <div className="dateTime">
+            <div className="date"></div>
+            <div className="time"></div>
+          </div>
+          <div className="information">
+            <h3>Termine werden geladen</h3>
+            <div>Bitte warten...</div>
+          </div>
+        </div>
+      </div>
+    );
   localStorage.setItem(requestString, JSON.stringify(data));
 
   const rows: JSX.Element[] = [];
