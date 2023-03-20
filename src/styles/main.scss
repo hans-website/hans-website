@@ -389,12 +389,14 @@ h2 {
       width: calc(100% - 16px);
       margin: 38px 8px 0 8px;
     }
-
   }
 
   .aboutName {
     text-align: left;
     padding-top: 32px;
+  }
+  .aboutJob {
+    font-size: 24px;
   }
 }
 

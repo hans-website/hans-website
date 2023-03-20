@@ -17,11 +17,14 @@ const About = () => (
           alt="Bild von Hans Porten"
         />
         <h2 className="aboutName">Hans Porten</h2>
+        <h3 className="aboutJob">Bariton</h3>
         <p>
           Schreiben Sie mir gerne persönlich, wenn Sie Fragen haben, an
           Unterricht interessiert sind oder mich für Konzerte anfragen möchten!
         </p>
-        <div>{/* <p>@gmail.com</p> */}</div>
+        <div>
+          <p>hansporten.gesang@gmail.com</p>
+        </div>
         <div>
           <p>015164619344</p>
         </div>
