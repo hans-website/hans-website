@@ -63,18 +63,22 @@ const Calendar: FC<CalendarProps> = (props) => {
       summary: string;
       description: string;
       location: string;
-      start: { dateTime: string };
+      start: { dateTime: string; date: string };
     }) => {
-      const dateTime = new Date(Date.parse(item.start.dateTime));
+      const dateTime = new Date(
+        Date.parse(item.start.dateTime || item.start.date)
+      );
       rows.push(
         <div key={item.id} className="row">
           <div className="dateTime">
             <div className="date">{dateTime.toLocaleDateString()}</div>
             <div className="time">
-              {dateTime.toLocaleTimeString([], {
-                hour: '2-digit',
-                minute: '2-digit',
-              })}
+              {item.start.dateTime
+                ? dateTime.toLocaleTimeString([], {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                  })
+                : ''}
             </div>
           </div>
           <div className="information">
