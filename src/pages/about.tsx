@@ -10,7 +10,7 @@ const About = () => (
       <h1>Kontakt</h1>
     </div>
     <Content>
-      <div className="about">
+      <div className="pageAbout">
         <img
           className="aboutImage"
           src="/assets/images/vita.webp"
