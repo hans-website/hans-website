@@ -187,7 +187,7 @@ h3 {
   background-image: url("/assets/images/main-background.webp"),
     url("/assets/images/main-background2.jpg");
   background-size: cover;
-  background-position-y: -25px;
+  background-position-y: -20px;
   background-repeat: no-repeat;
 
   @media only screen and (max-width: 900px) {
@@ -195,8 +195,15 @@ h3 {
   }
 
   @media only screen and (max-width: 800px) {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("/assets/images/main-background.webp"),
-    url("/assets/images/main-background2.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      url("/assets/images/main-background.webp"),
+      url("/assets/images/main-background2.jpg");
+  }
+
+  @media only screen and (min-width: 2000px) {
+    background-size: 2119px;
+    background-position-x: center;
+    background-position-y: -20px;
   }
 
   h1 {
@@ -215,7 +222,7 @@ h3 {
   background-image: url("/assets/images/main-background.webp"),
     url("/assets/images/main-background2.jpg");
   background-size: cover;
-  background-position-y: -25px;
+  background-position-y: -20px;
   background-repeat: no-repeat;
 
   @media only screen and (max-width: 900px) {
@@ -223,8 +230,15 @@ h3 {
   }
 
   @media only screen and (max-width: 800px) {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("/assets/images/main-background.webp"),
-    url("/assets/images/main-background2.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      url("/assets/images/main-background.webp"),
+      url("/assets/images/main-background2.jpg");
+  }
+
+  @media only screen and (min-width: 2000px) {
+    background-size: 2119px;
+    background-position-x: center;
+    background-position-y: -20px;
   }
 
   h1 {
@@ -286,7 +300,6 @@ h2 {
         margin-bottom: 8px;
         width: unset;
       }
-  
     }
     .information {
       max-width: 660px;
@@ -357,6 +370,31 @@ h2 {
       font-size: 22px;
       padding-top: 80px;
     }
+  }
+}
+.about {
+  max-width: 1800px;
+  margin: 0 auto;
+  .aboutImage {
+    width: 700px;
+    margin: 38px 48px 0 16px;
+    float: left;
+
+    @media only screen and (max-width: 1200px) {
+      width: 400px;
+    }
+
+    @media only screen and (max-width: 800px) {
+      float: unset;
+      width: calc(100% - 16px);
+      margin: 38px 8px 0 8px;
+    }
+
+  }
+
+  .aboutName {
+    text-align: left;
+    padding-top: 32px;
   }
 }
 
