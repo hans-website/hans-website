@@ -10,6 +10,7 @@ const Calendar = () => {
 
   const calId =
     'e4b3f082264d3c531e86213d70a796361641870df84f095ccc8f436be0019a3a@group.calendar.google.com';
+  //  '4908091ffce1a9fc010de8f1267503039f161c08f999bbc2eab1d3dd243f5a98@group.calendar.google.com';
   const apiKey = 'AIzaSyBLem43I84ozduVr3MxAaxErmlRhhKEhQE';
 
   useEffect(() => {
@@ -28,6 +29,8 @@ const Calendar = () => {
     revalidateOnReconnect: false,
   });
 
+  console.log(data);
+
   if (error) return <div>Laden der Termine ist fehlgeschlagen</div>;
   if (!data) return <div>Loading...</div>;
   localStorage.setItem(requestString, JSON.stringify(data));
@@ -39,6 +42,7 @@ const Calendar = () => {
       id: string;
       summary: string;
       description: string;
+      location: string;
       start: { dateTime: string };
     }) => {
       const dateTime = new Date(Date.parse(item.start.dateTime));
@@ -54,8 +58,12 @@ const Calendar = () => {
             </div>
           </div>
           <div className="information">
+            <h4 dangerouslySetInnerHTML={{ __html: item.location }}></h4>
             <h3>{item.summary}</h3>
-            <div dangerouslySetInnerHTML={{ __html: item.description }}></div>
+            <div
+              className="description"
+              dangerouslySetInnerHTML={{ __html: item.description }}
+            ></div>
           </div>
         </div>
       );
