@@ -378,6 +378,11 @@ h2 {
 .pageAbout {
   max-width: 1800px;
   margin: 0 auto;
+  
+
+  @media only screen and (max-width: 800px) {
+    margin: 0 8px 0 8px;
+  }
   .aboutImage {
     width: 700px;
     margin: 38px 48px 0 16px;
@@ -400,6 +405,20 @@ h2 {
   }
   .aboutJob {
     font-size: 24px;
+  }
+
+  .contact {
+    margin-bottom: 16px;
+    .img {
+      width: 48px;
+      float: left;
+    }
+    div {
+      display: inline-block;
+      height: 48px;
+      line-height: 48px;
+      margin-left: 8px;
+    }
   }
 }
 
