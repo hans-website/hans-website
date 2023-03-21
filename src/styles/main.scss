@@ -303,8 +303,11 @@ h2 {
     }
     .information {
       max-width: 660px;
+      width: calc(100% - 140px);
       display: inline-block;
+
       @media only screen and (max-width: 800px) {
+        width: unset;
         max-width: unset;
       }
     }
@@ -328,7 +331,7 @@ h2 {
     }
 
     .description {
-      white-space: pre;
+      white-space: pre-line;
       a {
         text-decoration: underline;
       }
