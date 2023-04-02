@@ -5,8 +5,15 @@ import { Meta } from '../layout/Meta';
 import { Main } from '../templates/Main';
 
 const Vita = () => (
-  <Main meta={<Meta title="Vita" description="Hans Porten wusste schon im zarten Alter von fünf Jahren, dass
-  Singen seine große Leidenschaft ist. Bereits in diesem Alter..." />}>
+  <Main
+    meta={
+      <Meta
+        title="Vita"
+        description="Hans Porten wusste schon im zarten Alter von fünf Jahren, dass
+  Singen seine große Leidenschaft ist. Bereits in diesem Alter..."
+      />
+    }
+  >
     <div className="sub-title">
       <h1>Vita</h1>
     </div>
