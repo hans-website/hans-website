@@ -1,5 +1,5 @@
 ---
-title: 'My first post'
+title: 'Herzlich Wilkommen auf meiner neuen Website!'
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 date: '2020-02-02'
 modified_date: '2020-02-02'
