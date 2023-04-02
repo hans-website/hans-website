@@ -9,5 +9,7 @@ image: /assets/images/posts/website-screenshot.jpg
 Ich freue mich sehr euch auf meiner neuen Website begrüßen zu dürfen! Bald werden hier neue Infos und Updates folgen!
 
 
+<!--- 
 ![website screenshot](@@baseUrl@@/assets/images/posts/website-screenshot.jpg)
+--->
 
