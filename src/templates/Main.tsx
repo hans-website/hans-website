@@ -40,10 +40,6 @@ const Main = (props: IMainProps) => (
       <div id="copyright">
         <Link href="/imprint">Impressum</Link>
         <br />© Copyright {new Date().getFullYear()} {AppConfig.title}. Powered
-        with{' '}
-        <span role="img" aria-label="Love">
-          ♥
-        </span>{' '}
         by Leon Schmidt
       </div>
     </div>
