@@ -38,7 +38,9 @@ const Main = (props: IMainProps) => (
       <div id="content">{props.children}</div>
 
       <div id="copyright">
-        © Copyright {new Date().getFullYear()} {AppConfig.title}. Powered with{' '}
+        <Link href="/imprint">Impressum</Link>
+        <br />© Copyright {new Date().getFullYear()} {AppConfig.title}. Powered
+        with{' '}
         <span role="img" aria-label="Love">
           ♥
         </span>{' '}

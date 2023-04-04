@@ -11,7 +11,14 @@ import { getAllPosts } from '../utils/Content';
 
 const News = (props: IBlogGalleryProps) => (
   // TODO: Description
-  <Main meta={<Meta title="News" description="Lorem ipsum" />}>
+  <Main
+    meta={
+      <Meta
+        title="News"
+        description="Alle Neuigkeiten und Infos auf einen Blick!"
+      />
+    }
+  >
     <div className="sub-title">
       <h1>News</h1>
     </div>

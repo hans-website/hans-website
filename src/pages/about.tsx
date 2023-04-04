@@ -5,7 +5,14 @@ import { Meta } from '../layout/Meta';
 import { Main } from '../templates/Main';
 
 const About = () => (
-  <Main meta={<Meta title="Lorem ipsum" description="Lorem ipsum" />}>
+  <Main
+    meta={
+      <Meta
+        title="Kontakt"
+        description="Schreiben Sie mir gerne persönlich, wenn Sie Fragen haben, an Unterricht interessiert sind oder mich für Konzerte anfragen möchten!"
+      />
+    }
+  >
     <div className="sub-title">
       <h1>Kontakt</h1>
     </div>

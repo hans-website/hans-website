@@ -122,7 +122,7 @@ h3 {
 .home-title {
   height: 60vh;
   display: block;
-  padding: 48px;
+  padding: 8px;
 
   background-image: url("/assets/images/main-background.webp"),
     url("/assets/images/main-background2.jpg");
@@ -147,7 +147,7 @@ h3 {
     height: 40vh;
   }
   @media only screen and (max-width: 700px) {
-    height: 200px;
+    height: 250px;
     background-position: left -50px center;
 
     h1 {
@@ -163,18 +163,18 @@ h3 {
   }
 
   @media only screen and (max-width: 500px) {
-    height: 200px;
-    background-position: -120px center;
+    height: 250px;
+    background-position: -100px center;
 
     h1 {
       font-weight: 300;
       font-size: 50px;
-      margin: 2vh 16px 0 50vw;
+      margin: 30px 0 0 50vw;
     }
     span {
       font-weight: normal;
       font-size: 25px;
-      margin: 0 16px 0 50vw;
+      margin: 0 0 0 50vw;
     }
   }
 }
@@ -215,15 +215,20 @@ h3 {
 }
 
 .post-title {
-  height: calc(20vh);
+  height: 25vh;
+  min-height: 175px;
   display: block;
-  padding: 48px;
+  padding: 8px;
+  justify-content: center;
 
   background-image: url("/assets/images/main-background.webp"),
     url("/assets/images/main-background2.jpg");
   background-size: cover;
   background-position-y: -20px;
   background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
 
   @media only screen and (max-width: 900px) {
     background-position-y: top;
@@ -245,7 +250,7 @@ h3 {
     text-align: center;
     font-weight: 300;
     font-size: 40px;
-    margin: 4vh 0 0 0;
+    margin: 0;
   }
   span {
     display: block;
@@ -422,8 +427,64 @@ h2 {
   }
 }
 
+.pageImprint {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.content {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  .title-image {
+    max-width: 30%;
+    float: left;
+    padding: 0 12px;
+
+    
+    @media only screen and (max-width: 1000px) {
+      max-width: 50%;
+    }
+
+    
+    @media only screen and (max-width: 650px) {
+      float: initial;
+      max-width: unset;
+      width: calc(100% - 24px);
+    }
+  }
+
+  img:not(.title-image) {
+    max-width: calc(50% - 24px);
+    padding: 0 12px;
+    margin: 0 auto;
+    display: block;
+    clear: both;
+
+    
+    
+    @media only screen and (max-width: 1000px) {
+      max-width: calc(80% - 24px);
+    }
+
+    
+    @media only screen and (max-width: 650px) {
+    max-width: calc(100% - 24px);
+
+      float: initial;
+      max-width: unset;
+      width: calc(100% - 24px);
+    }
+  }
+}
+
 .vita {
-  margin: 0 16px 0 16px;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 16px;
+
 }
 
 @keyframes fadein {
