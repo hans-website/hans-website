@@ -47,13 +47,15 @@ const DisplayPost = (props: IPostProps) => (
       </span>
     </div>
 
-    <Content>
-      <img className="title-image" src={props.image} alt="" />
-      <div
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: props.content }}
-      />
-    </Content>
+    <div className="pagePost">
+      <Content>
+        <img className="title-image" src={props.image} alt="" />
+        <div
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: props.content }}
+        />
+      </Content>
+    </div>
   </Main>
 );
 
