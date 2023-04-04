@@ -35,8 +35,6 @@ const Calendar: FC<CalendarProps> = (props) => {
     revalidateOnReconnect: false,
   });
 
-  console.log(data);
-
   if (error) return <div>Laden der Termine ist fehlgeschlagen</div>;
   if (!data)
     return (
