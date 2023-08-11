@@ -81,7 +81,7 @@ const Calendar: FC<CalendarProps> = (props) => {
           </div>
           <div className="information">
             <h4 dangerouslySetInnerHTML={{ __html: item.location }}></h4>
-            <h3>{item.summary}</h3>
+            <h3 dangerouslySetInnerHTML={{ __html: item.summary }}></h3>
             <div
               className="description"
               dangerouslySetInnerHTML={{ __html: item.description }}
