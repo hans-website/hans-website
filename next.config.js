@@ -20,6 +20,7 @@ let basePath = '';
 module.exports = withBundleAnalyzer({
   assetPrefix,
   basePath,
+  output: 'export',
   poweredByHeader: false,
   trailingSlash: true,
   env: {
