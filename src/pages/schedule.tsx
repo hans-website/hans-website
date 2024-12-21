@@ -3,6 +3,7 @@ import React from 'react';
 import { Calendar } from '../content/Calendar';
 import { Meta } from '../layout/Meta';
 import { Main } from '../templates/Main';
+import Link from 'next/link';
 
 const Schedule = () => (
   // TODO: Description
@@ -17,7 +18,10 @@ const Schedule = () => (
     <div className="sub-title">
       <h1>Termine</h1>
     </div>
-    <Calendar numEvents={50} />
+    <div className="showPast">
+      <Link href="/past-schedule/">Vergangene Termine ↑</Link>
+    </div>
+    <Calendar numEvents={50} showPastEvents={false} />
   </Main>
 );
 

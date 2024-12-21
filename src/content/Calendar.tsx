@@ -2,9 +2,10 @@ import React, { FC, useEffect, useState, type JSX } from 'react';
 
 interface CalendarProps {
   numEvents: number;
+  showPastEvents?: boolean;
 }
 
-const Calendar: FC<CalendarProps> = (props) => {
+const Calendar: FC<CalendarProps> = ({ numEvents, showPastEvents = false }) => {
   const [requestString, setRequestString] = useState('');
   const [data, setData] = useState<any | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -15,16 +16,22 @@ const Calendar: FC<CalendarProps> = (props) => {
   const apiKey = 'AIzaSyBLem43I84ozduVr3MxAaxErmlRhhKEhQE';
 
   useEffect(() => {
-    const date = new Date(Date.now());
+    const now = new Date();
+    const date = new Date(now);
     date.setHours(2);
     date.setMinutes(0);
     date.setSeconds(0);
 
-    const requestUrl = `https://www.googleapis.com/calendar/v3/calendars/${calId}/events?orderBy=startTime&key=${apiKey}&timeMin=${date.toISOString()}&singleEvents=true&maxResults=${
-      props.numEvents
-    }`;
+    let requestUrl = '';
+    if (showPastEvents) {
+      const oneYearAgo = new Date(now);
+      oneYearAgo.setFullYear(now.getFullYear() - 1);
+      requestUrl = `https://www.googleapis.com/calendar/v3/calendars/${calId}/events?orderBy=startTime&key=${apiKey}&timeMin=${oneYearAgo.toISOString()}&timeMax=${date.toISOString()}&singleEvents=true&maxResults=${numEvents}`;
+    } else {
+      requestUrl = `https://www.googleapis.com/calendar/v3/calendars/${calId}/events?orderBy=startTime&key=${apiKey}&timeMin=${date.toISOString()}&singleEvents=true&maxResults=${numEvents}`;
+    }
     setRequestString(requestUrl);
-  }, [props.numEvents]);
+  }, [numEvents, showPastEvents]);
 
   useEffect(() => {
     if (!requestString) return;
@@ -38,6 +45,9 @@ const Calendar: FC<CalendarProps> = (props) => {
         return res.json();
       })
       .then((data) => {
+        if (showPastEvents) {
+          data.items.reverse();
+        }
         setData(data);
         setError(null);
         localStorage.setItem(requestString, JSON.stringify(data));
@@ -78,9 +88,7 @@ const Calendar: FC<CalendarProps> = (props) => {
       location: string;
       start: { dateTime: string; date: string };
     }) => {
-      const dateTime = new Date(
-        Date.parse(item.start.dateTime || item.start.date)
-      );
+      const dateTime = new Date(Date.parse(item.start.dateTime || item.start.date));
       rows.push(
         <div key={item.id} className="row">
           <div className="dateTime">
