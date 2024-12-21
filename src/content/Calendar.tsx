@@ -1,9 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
-
-import useSWR from 'swr';
-
-const fetcher = (url: RequestInfo, init?: RequestInit) =>
-  fetch(url, init).then((res) => res.json());
+import React, { FC, useEffect, useState, type JSX } from 'react';
 
 interface CalendarProps {
   numEvents: number;
@@ -11,10 +6,12 @@ interface CalendarProps {
 
 const Calendar: FC<CalendarProps> = (props) => {
   const [requestString, setRequestString] = useState('');
+  const [data, setData] = useState<any | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
   const calId =
     'e4b3f082264d3c531e86213d70a796361641870df84f095ccc8f436be0019a3a@group.calendar.google.com';
-  //  '4908091ffce1a9fc010de8f1267503039f161c08f999bbc2eab1d3dd243f5a98@group.calendar.google.com';
   const apiKey = 'AIzaSyBLem43I84ozduVr3MxAaxErmlRhhKEhQE';
 
   useEffect(() => {
@@ -22,21 +19,40 @@ const Calendar: FC<CalendarProps> = (props) => {
     date.setHours(2);
     date.setMinutes(0);
     date.setSeconds(0);
-    setRequestString(
-      `https://www.googleapis.com/calendar/v3/calendars/${calId}/events?orderBy=startTime&key=${apiKey}&timeMin=${date.toISOString()}&singleEvents=true&maxResults=${
-        props.numEvents
-      }`
-    );
-  }, []);
 
-  const { data, error } = useSWR(requestString || null, fetcher, {
-    revalidateIfStale: false,
-    revalidateOnFocus: false,
-    revalidateOnReconnect: false,
-  });
+    const requestUrl = `https://www.googleapis.com/calendar/v3/calendars/${calId}/events?orderBy=startTime&key=${apiKey}&timeMin=${date.toISOString()}&singleEvents=true&maxResults=${
+      props.numEvents
+    }`;
+    setRequestString(requestUrl);
+  }, [props.numEvents]);
 
-  if (error) return <div>Laden der Termine ist fehlgeschlagen</div>;
-  if (!data)
+  useEffect(() => {
+    if (!requestString) return;
+
+    setLoading(true);
+    fetch(requestString)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setData(data);
+        setError(null);
+        localStorage.setItem(requestString, JSON.stringify(data));
+      })
+      .catch(() => {
+        setError('Laden der Termine ist fehlgeschlagen');
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [requestString]);
+
+  if (error) return <div>{error}</div>;
+
+  if (loading)
     return (
       <div className="schedule">
         <div className="row">
@@ -51,7 +67,6 @@ const Calendar: FC<CalendarProps> = (props) => {
         </div>
       </div>
     );
-  localStorage.setItem(requestString, JSON.stringify(data));
 
   const rows: JSX.Element[] = [];
 

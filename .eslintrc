@@ -65,7 +65,8 @@
         "unused-imports/no-unused-vars": [
           "error",
           { "argsIgnorePattern": "^_" }
-        ]
+        ],
+        "@next/next/no-html-link-for-pages": ["error", "src/pages"] // Add this line
       }
     }
   ]
